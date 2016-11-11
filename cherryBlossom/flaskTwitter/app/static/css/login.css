@@ -1,0 +1,64 @@
+/* Login Page Style Sheet */
+
+.container{
+	margin-top: 10%;
+	margin-bottom: 5%;
+	margin-right: 30%;
+	margin-left: 30%;
+	width: 40%;
+	text-align: left;
+	padding-top: 5%;
+	padding-bottom: 5%;
+	padding-right: 10%;
+	padding-left: 10%;
+	border-radius: 5px;
+	background-color: white;
+
+}
+
+.form-control{
+	margin: 5%;
+	margin-left: 0%;
+}
+
+.btn{
+	background-color: #ED4961;
+	color: white;
+	border-color: #ED4961;
+}
+
+.btn:hover{
+	background-color: #D43048;
+	color: white;
+	border-color: #D43048;
+}
+
+.rememberMe{
+	float: right;
+	text-align: right;
+	width: 50%;
+}
+
+#brandIcon{
+	padding: 25%;
+}
+
+#icon{
+	
+}
+
+/*#icon{
+	display:block;
+    margin:auto;
+}*/
+
+body{
+	background-image: url(../img/cherryBlossomWallpaper.jpeg);
+	background-size: cover;
+}
+
+label{
+	text-align: right;
+	width: 100%;
+}
+

@@ -1,0 +1,92 @@
+html { 
+  background: url(../img/cherryBlossomWallpaper.jpeg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/*body{
+	background-image: url(../img/cherryBlossomWallpaper.jpeg);
+	background-size: cover;
+}*/
+
+.container{
+	border-radius: 5px;
+	padding: 0;
+	border-width: 1px;
+	background-color: white;
+}
+
+#brandIcon{
+	padding: 25%;
+}
+
+#bigContainer{
+	border: solid;
+	border-color: #ED4961;
+	margin-top: 5%;
+}
+
+#lastWrapper{
+	border-bottom: none;
+}
+
+#numInfo{
+	font-weight: bold;
+	color: #ED4961;
+}
+
+#profileName{
+	color: #ED4961;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.FTWrapper{
+	/*border: solid;*/
+	border-color: purple;
+	margin-bottom: 1%;
+	border-bottom: solid;
+	border-width: 2px;
+	border-color: #ED4961;
+	padding-bottom: 2%;
+	padding-top: 1%;
+	padding-left: 2%;
+}
+
+.testSpan{
+	/*border: solid;*/
+	border-color: red;
+}
+
+.row{
+	margin-right: 0;
+	margin-left: 0;
+}
+
+.testImg{
+	border-radius: 5px;
+}
+
+.testImgContainer{
+	padding: 0;
+}
+
+.nickname{
+	font-weight: bold;
+}
+
+.testProfile{
+	border: solid;
+	border-color: #ED4961;
+	margin-top: 5%;
+	margin-left: 2%;
+	margin-right: 1%;
+	padding: 1%
+}
+
+.timestamp{
+	color: grey;
+	font-size: 12px;
+}

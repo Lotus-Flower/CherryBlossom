@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>News Feed - FlaskTwitter</title>
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="../static/js/bootstrap.min.js"></script>
+
+	<!--Style-->
+	<link rel="stylesheet" type="text/css" href="../static/css/newsFeed.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/navbar.css">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a href="#"><img src="../static/img/cherryBlossomIconCircle.png" id="brandIcon" class="img-circle navbar-brand"></a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	      <li class="active"><a href="#">Home</a></li>
+	      <li><a href="#">About</a></li>
+	    </ul>
+	  </div>
+	</nav>
+
+	<div class="container col-md-3 testProfile">
+		<div class="row">
+			<span class="col-md-4 testImgContainer"><img class="img-responsive testImg" src="../static/img/MattEmma.jpg"></span>
+			<span class="col-md-8 testSpan" id="profileName">Emma Keegan Jones</span>
+			<span class="col-md-8">@mattiscool</span>
+			<span class="col-md-8">Tweets - <span id="numInfo">1,234</span></span>
+			<span class="col-md-8">Followers - <span id="numInfo">9,999</span></span>
+			<span class="col-md-8">Following - <span id="numInfo">10,000</span></span>
+		</div>
+	</div>
+	<div class="container col-md-6" id="bigContainer">
+		<div class="FTWrapper row">
+			<div class="row">
+				<span class="col-md-1 testImgContainer"><img class="img-responsive testImg" src="../static/img/cherryBlossomIconCircle.png"></span>
+				<span class="col-md-10 testSpan"><span class="nickname">Matty Meehan</span><span class="timestamp"> - @cherryBlossom: 21:00</span></span>
+				<span class="col-md-10 testSpan">A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter.</span>
+			</div>
+		</div>
+		<div class="FTWrapper row">
+			<div class="row">
+				<span class="col-md-1 testImgContainer"><img class="img-responsive testImg" src="../static/img/cherryBlossomIconCircle.png"></span>
+				<span class="col-md-10 testSpan"><span class="nickname">Matty Meehan</span><span class="timestamp"> - @cherryBlossom: 21:00</span></span>
+				<span class="col-md-10 testSpan">A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter.</span>
+			</div>
+		</div>
+		<div class="FTWrapper row">
+			<div class="row">
+				<span class="col-md-1 testImgContainer"><img class="img-responsive testImg" src="../static/img/MattEmma.jpg"></span>
+				<span class="col-md-10 testSpan"><span class="nickname">Emma Jones</span><span class="timestamp"> - @mattiscool: 21:00</span></span>
+				<span class="col-md-10 testSpan">Matt is cool and I am a nerd.</span>
+			</div>
+		</div>
+		<div class="FTWrapper row">
+			<div class="row">
+				<span class="col-md-1 testImgContainer"><img class="img-responsive testImg" src="../static/img/cherryBlossomIconCircle.png"></span>
+				<span class="col-md-10 testSpan"><span class="nickname">Matty Meehan</span><span class="timestamp"> - @cherryBlossom: 21:00</span></span>
+				<span class="col-md-10 testSpan">A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter.</span>
+			</div>
+		</div>
+		<div class="FTWrapper row">
+			<div class="row">
+				<span class="col-md-1 testImgContainer"><img class="img-responsive testImg" src="../static/img/cherryBlossomIconCircle.png"></span>
+				<span class="col-md-10 testSpan"><span class="nickname">Matty Meehan</span><span class="timestamp"> - @cherryBlossom: 21:00</span></span>
+				<span class="col-md-10 testSpan">A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter.</span>
+			</div>
+		</div>
+		<div class="FTWrapper row" id="lastWrapper">
+			<div class="row">
+				<span class="col-md-1 testImgContainer"><img class="img-responsive testImg" src="../static/img/cherryBlossomIconCircle.png"></span>
+				<span class="col-md-10 testSpan"><span class="nickname">Matty Meehan</span><span class="timestamp"> - @cherryBlossom: 21:00</span></span>
+				<span class="col-md-10 testSpan">A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter.</span>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
