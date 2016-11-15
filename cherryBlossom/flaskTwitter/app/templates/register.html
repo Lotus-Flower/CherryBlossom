@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block head %}
+	<!--Style-->
+	<link rel="stylesheet" type="text/css" href="../static/css/register.css">
+{% endblock %}
+{% block content %}
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a href="#"><img src="../static/img/cherryBlossomIconCircle.png" id="brandIcon" class="img-circle navbar-brand"></a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	      <li class="active"><a href="#">Home</a></li>
+	      <li><a href="#">About</a></li>
+	    </ul>
+	  </div>
+	</nav>
+
+		<div class="container">
+			<h3>Register for FlaskTwitter</h3>
+			<form action="" method="post" name="register">
+				{{ form.hidden_tag() }}
+				{{ form.username(size=16, class="form-control", placeholder="Username", autocomplete="off")}}
+				{% for error in form.username.errors %}
+            		<span class="warningMessage">[{{ error }}]</span>
+    			{% endfor %}
+				{{ form.password_hash(size=16, class="form-control", placeholder="Password")}}
+				{% for error in form.password_hash.errors %}
+            		<span class="warningMessage">[{{ error }}]</span>
+    			{% endfor %}
+				{{ form.fName(size=30, class="form-control", placeholder="First Name", autocomplete="off")}}
+				{% for error in form.fName.errors %}
+            		<span class="warningMessage">[{{ error }}]</span>
+    			{% endfor %}
+				{{ form.lName(size=30, class="form-control", placeholder="Last Name", autocomplete="off")}}
+				{% for error in form.lName.errors %}
+            		<span class="warningMessage">[{{ error }}]</span>
+    			{% endfor %}
+				{{ form.email(size=120, class="form-control", placeholder="Email", autocomplete="off")}}
+				{% for error in form.email.errors %}
+            		<span class="warningMessage">[{{ error }}]</span>
+    			{% endfor %}
+				<div id="submitRow">
+		  			<input type="submit" value="Register" class="btn btn-default"></input>
+				</div>
+			</form>
+<!-- 		    {% with messages = get_flashed_messages() %}
+		      {% if messages %}
+		        <ul>
+		        {% for message in messages %}
+		            <li>{{ message }} </li>
+		        {% endfor %}
+		        </ul>
+		      {% endif %}
+		    {% endwith %} -->
+		</div>
+{% endblock %}

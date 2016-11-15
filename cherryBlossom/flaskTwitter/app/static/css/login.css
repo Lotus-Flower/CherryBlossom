@@ -19,12 +19,14 @@
 .form-control{
 	margin: 5%;
 	margin-left: 0%;
+	margin-bottom: 0%;
 }
 
 .btn{
 	background-color: #ED4961;
 	color: white;
 	border-color: #ED4961;
+	margin-top: 1%;
 }
 
 .btn:hover{
@@ -39,18 +41,17 @@
 	width: 50%;
 }
 
+.warningMessage{
+	color: red;
+}
+
 #brandIcon{
 	padding: 25%;
 }
 
-#icon{
-	
+#submitRow{
+	margin-top: 5%;
 }
-
-/*#icon{
-	display:block;
-    margin:auto;
-}*/
 
 body{
 	background-image: url(../img/cherryBlossomWallpaper.jpeg);

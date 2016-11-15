@@ -1,21 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-  	<title>News Feed - FlaskTwitter</title>
-    <!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
-
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="http://code.jquery.com/jquery-latest.js"></script>
-	<script src="../static/js/bootstrap.min.js"></script>
-
+{% extends "base.html" %}
+{% block head %}
 	<!--Style-->
 	<link rel="stylesheet" type="text/css" href="../static/css/newsFeed.css">
-	<link rel="stylesheet" type="text/css" href="../static/css/navbar.css">
+{% endblock %}
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
-<body>
+{% block content %}
 	<nav class="navbar navbar-default navbar-fixed-top">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
@@ -31,7 +20,7 @@
 	<div class="container col-md-3 testProfile">
 		<div class="row">
 			<span class="col-md-4 testImgContainer"><img class="img-responsive testImg" src="../static/img/MattEmma.jpg"></span>
-			<span class="col-md-8 testSpan" id="profileName">Emma Keegan Jones</span>
+			<span class="col-md-8 testSpan" id="profileName">{{ user.fName }} {{ user.lName }}</span>
 			<span class="col-md-8">@mattiscool</span>
 			<span class="col-md-8">Tweets - <span id="numInfo">1,234</span></span>
 			<span class="col-md-8">Followers - <span id="numInfo">9,999</span></span>
@@ -82,6 +71,4 @@
 			</div>
 		</div>
 	</div>
-
-</body>
-</html>
+{% endblock %}
