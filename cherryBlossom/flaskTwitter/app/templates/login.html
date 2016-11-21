@@ -13,6 +13,9 @@
 	      <li class="active"><a href="#">Home</a></li>
 	      <li><a href="#">About</a></li>
 	    </ul>
+	    <ul class="nav navbar-nav navbar-right">
+	      <li><a href="{{ url_for('index') }}">Login</a></li>
+	    </ul>
 	  </div>
 	</nav>
 
@@ -33,6 +36,9 @@
 					<span class="rememberMe checkbox"><label class="checkbox-inline"> {{form.rememberMe(default=False)}} Remember Me</label></span>
 				</div>
 			</form>
+			<div class="moreInfoRow">
+				<span class="moreInfoSpan">New user? <a href="{{ url_for('register') }}">Create an Account!</a></span>
+			</div>
 <!-- 		    {% with messages = get_flashed_messages() %}
 		      {% if messages %}
 		        <ul>

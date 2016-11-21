@@ -13,9 +13,11 @@
 	      <li class="active"><a href="#">Home</a></li>
 	      <li><a href="#">About</a></li>
 	    </ul>
+  	    <ul class="nav navbar-nav navbar-right">
+	      <li><a href="{{ url_for('index') }}">Login</a></li>
+	    </ul>
 	  </div>
 	</nav>
-
 		<div class="container">
 			<h3>Register for FlaskTwitter</h3>
 			<form action="" method="post" name="register">
@@ -44,14 +46,5 @@
 		  			<input type="submit" value="Register" class="btn btn-default"></input>
 				</div>
 			</form>
-<!-- 		    {% with messages = get_flashed_messages() %}
-		      {% if messages %}
-		        <ul>
-		        {% for message in messages %}
-		            <li>{{ message }} </li>
-		        {% endfor %}
-		        </ul>
-		      {% endif %}
-		    {% endwith %} -->
 		</div>
 {% endblock %}

@@ -45,6 +45,14 @@
 	color: red;
 }
 
+.moreInfoSpan{
+	white-space: nowrap;
+}
+
+.moreInfoRow{
+	margin-top: 5%;
+}
+
 #brandIcon{
 	padding: 25%;
 }

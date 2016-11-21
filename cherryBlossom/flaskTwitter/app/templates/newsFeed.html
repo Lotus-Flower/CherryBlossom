@@ -2,6 +2,7 @@
 {% block head %}
 	<!--Style-->
 	<link rel="stylesheet" type="text/css" href="../static/css/newsFeed.css">
+	<script src="../static/js/tweet.js" async></script>
 {% endblock %}
 
 {% block content %}
@@ -14,32 +15,52 @@
 	      <li class="active"><a href="#">Home</a></li>
 	      <li><a href="#">About</a></li>
 	    </ul>
+  	    <ul class="nav navbar-nav navbar-right">
+	      <li><a href="{{ url_for('logout') }}">Logout</a></li>
+	    </ul>
 	  </div>
 	</nav>
 
 	<div class="container col-md-3 testProfile">
 		<div class="row">
-			<span class="col-md-4 testImgContainer"><img class="img-responsive testImg" src="../static/img/MattEmma.jpg"></span>
+			<span class="col-md-4 testImgContainer"><img class="img-responsive testImg" src="{{ user.gravatar(size=100) }}"></span>
 			<span class="col-md-8 testSpan" id="profileName">{{ user.fName }} {{ user.lName }}</span>
-			<span class="col-md-8">@mattiscool</span>
+			<span class="col-md-8" id="profileUser">@{{ user.username }}</span>
 			<span class="col-md-8">Tweets - <span id="numInfo">1,234</span></span>
 			<span class="col-md-8">Followers - <span id="numInfo">9,999</span></span>
 			<span class="col-md-8">Following - <span id="numInfo">10,000</span></span>
 		</div>
 	</div>
 	<div class="container col-md-6" id="bigContainer">
-		<div class="FTWrapper row">
+		<div class="FTWrapper row" id="firstWrapper">
 			<div class="row">
-				<span class="col-md-1 testImgContainer"><img class="img-responsive testImg" src="../static/img/cherryBlossomIconCircle.png"></span>
-				<span class="col-md-10 testSpan"><span class="nickname">Matty Meehan</span><span class="timestamp"> - @cherryBlossom: 21:00</span></span>
-				<span class="col-md-10 testSpan">A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter.</span>
+				<span class="col-md-1 testImgContainer"><img class="img-responsive testImg" src="{{ user.gravatar(size=100) }}"></span>
+				<span class="col-md-10">
+					<form action="" method="post" name="tweet" id="post-form">
+						{{ form.hidden_tag() }}
+						{{ form.body(size=300, maxlength="300", rows="4", class="form-control", id="tweetBody", placeholder="What's new?", autocomplete="off")}}
+						<div id="submitRow">
+							<!-- <input type="submit" value="Post" class="btn btn-default"></input> -->
+							<button type="button" class="btn btn-default" id="tweetBtn">Post</button>
+						</div>
+					</form>
+				</span>
 			</div>
 		</div>
+		{% for tweet in tweets %}
+			<div class="FTWrapper row">
+				<div class="row">
+					<span class="col-md-1 testImgContainer"><img class="img-responsive testImg" src="{{ tweet.author.gravatar(size=100) }}"></span>
+					<span class="col-md-10 testSpan"><span class="nickname"> {{ tweet.author.fName }} {{ tweet.author.lName }}</span><span class="timestamp"> - @{{ tweet.author.username }}: {{ tweet.timestamp }}</span></span>
+					<span class="col-md-10 testSpan">{{ tweet.body }}</span>
+				</div>
+			</div>
+		{% endfor %}
 		<div class="FTWrapper row">
 			<div class="row">
 				<span class="col-md-1 testImgContainer"><img class="img-responsive testImg" src="../static/img/cherryBlossomIconCircle.png"></span>
 				<span class="col-md-10 testSpan"><span class="nickname">Matty Meehan</span><span class="timestamp"> - @cherryBlossom: 21:00</span></span>
-				<span class="col-md-10 testSpan">A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter.</span>
+				<span class="col-md-10 testSpan">A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum testing post for FlaskTwitter. A generic Lorem Ipsum t</span>
 			</div>
 		</div>
 		<div class="FTWrapper row">

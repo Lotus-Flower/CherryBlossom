@@ -28,6 +28,11 @@ html {
 	margin-top: 5%;
 }
 
+#firstWrapper{
+	padding-top: 5%;
+	background-color: #F7F7F7;
+}
+
 #lastWrapper{
 	border-bottom: none;
 }
@@ -89,4 +94,25 @@ html {
 .timestamp{
 	color: grey;
 	font-size: 12px;
+}
+
+.form-control{
+	resize: none;
+}
+
+.btn{
+	background-color: #ED4961;
+	color: white;
+	border-color: #ED4961;
+	margin-top: 1%;
+}
+
+.btn:hover{
+	background-color: #D43048;
+	color: white;
+	border-color: #D43048;
+}
+
+#submitRow{
+	text-align: right;
 }
