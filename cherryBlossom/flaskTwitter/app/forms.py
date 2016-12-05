@@ -16,3 +16,9 @@ class RegisterForm(Form):
 
 class TweetForm(Form):
 	body = TextAreaField('body', validators=[DataRequired()])
+
+class CommentForm(Form):
+	body = TextAreaField('body', validators=[DataRequired()])
+
+class SearchForm(Form):
+	username = StringField('username', validators=[DataRequired()])

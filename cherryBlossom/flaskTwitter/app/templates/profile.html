@@ -1,56 +1,60 @@
 {% extends "baseLoggedIn.html" %}
 {% block head %}
 	<!--Style-->
-	<link rel="stylesheet" type="text/css" href="../static/css/newsFeed.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/profile.css">
 
 	<!--JS-->
-	<script src="../static/js/tweet.js" async></script>
 	<script src="../static/js/comment.js" async></script>
 	<script src="../static/js/searchBar.js"></script>
 {% endblock %}
 
 {% block content %}
-	<div class="container col-md-3 testProfile">
-		<div class="row">
-			<span class="col-md-4 testImgContainer"><img class="img-responsive testImg" src="{{ user.gravatar(size=100) }}"></span>
-			<a href="{{ url_for('profile', username=user.username) }}"><span class="col-md-8" id="profileName">{{ user.fName }} {{ user.lName }}</span></a>
-			<span class="col-md-8" id="profileUser">@{{ user.username }}</span>
-			<span class="col-md-8">Tweets - <span class="numInfo" id="tweetInfo">{{ numTweets }}</span></span>
-			<span class="col-md-8">Followers - <span class="numInfo followInfo">{{ followed }}</span></span>
-			<span class="col-md-8">Following - <span class="numInfo followInfo">{{ followed }}</span></span>
+	<div class="container col-md-4 col-md-offset-4" id="profileContainer">
+		<div class="row" id="profileRow">
+			<span class="col-md-4"><img class="img-responsive profileImg" src="{{ user.gravatar(size=120) }}"></span>
+			<span class="col-md-8 testSpan" id="profileName">{{ user.fName }} {{ user.lName }}</span>
+			<span class="col-md-8 infoSpan" id="profileUser">@{{ user.username }}</span>
+			<span class="col-md-8 infoSpan">Tweets - <span id="numInfo">{{ numTweets }}</span></span>
+			<span class="col-md-8 infoSpan">Followers - <span id="numInfo">{{ followed }}</span></span>
+			<span class="col-md-8 infoSpan">Following - <span id="numInfo">{{ followed }}</span></span>
+		</div>
+		<div class="row text-center" id="followRow">
+			<span class="col-md-4 infoSpan">
+				{% if user == currUser %}
+					<a class="btn btn-default" href="#">Change Avatar</a>
+				{% elif canFollow == True %}
+					<a class="btn btn-default" href="{{ url_for('follow', username=user.username) }}">Follow</a>
+				{% else %}
+					<a class="btn btn-default" href="{{ url_for('unfollow', username=user.username) }}">UnFollow</a>
+				{% endif %}
+			</span>
 		</div>
 	</div>
-	<div class="container col-md-6" id="bigContainer">
-		<div class="FTWrapper row firstWrapper">
-			<div class="row">
-				<span class="col-md-1 testImgContainer"><img class="img-responsive testImg" src="{{ user.gravatar(size=100) }}"></span>
-				<span class="col-md-10">
-					<form action="" method="post" name="tweet" id="post-form">
-						{{ form.hidden_tag() }}
-						{{ form.body(size=300, maxlength="300", rows="4", class="form-control", id="tweetBody", placeholder="What's new?", autocomplete="off")}}
-						<div id="submitRow">
-							<!-- <input type="submit" value="Post" class="btn btn-default"></input> -->
-							<button type="button" class="btn btn-default" id="tweetBtn">Post</button>
-						</div>
-					</form>
-				</span>
-			</div>
-		</div>
-		{% if not tweets %}
+
+	<div class="container col-md-6 col-md-offset-3" id="bigContainer">
+	{% if not tweets %}
 		<div class="FTWrapper row lastWrapper noHover" id="noPostsHere">
 			<div class="row">
 				<span class="col-md-12 centerText">
-					<h4>No posts to display. Try making one, or following someone!</h4>
+				{% if user == currUser %}
+					<h4>No posts to display. Try making one!</h4>
+				{% else %}
+					<h4>This user has no posts to display!</h4>
+				{% endif %}
 				</span>
 			</div>
 		</div>
-		{% else %}
-			{% for tweet in tweets %}
-				{% if tweet == lastTweet %}
+	{% else %}
+		{% for tweet in tweets %}
+			{% if ((tweet == lastTweet) and (tweet == firstTweet))  %}
+				<div class="FTWrapper row firstWrapper lastWrapper" data-toggle="modal" data-target="#{{ 'Modal' ~ loop.index }}">
+			{% elif tweet == firstTweet %}
+				<div class="FTWrapper row firstWrapper" data-toggle="modal" data-target="#{{ 'Modal' ~ loop.index }}">
+			{% elif tweet == lastTweet %}
 				<div class="FTWrapper row lastWrapper" data-toggle="modal" data-target="#{{ 'Modal' ~ loop.index }}">
-				{% else %}
+			{% else %}
 				<div class="FTWrapper row" data-toggle="modal" data-target="#{{ 'Modal' ~ loop.index }}">
-				{% endif %}
+			{% endif %}
 					<div class="row">
 						<span class="col-md-1 testImgContainer"><img class="img-responsive testImg" src="{{ tweet.author.gravatar(size=100) }}"></span>
 						<span class="col-md-11">
@@ -78,15 +82,6 @@
 									<span class="col-md-2 testImgContainer"><img class="img-responsive testImg" src="{{ tweet.author.gravatar(size=100) }}"></span>
 									<span class="col-md-10"><h4 id="modalTweet">{{ tweet.body }}</h4></span>
 								</div>
-								<div class="row commentRow commentFormRow" id="{{ 'formRow' ~ tweet.id}}">
-									<span class="col-md-1 testImgContainer"><img class="img-responsive testImg" src="{{ tweet.author.gravatar(size=100) }}"></span>
-									<span class="col-md-11">
-										<form action="" method="post" name="comment" id="{{ 'comment-form-' ~ tweet.id}}">
-											{{ commentForm.hidden_tag() }}
-											{{ commentForm.body(size=140, maxlength="140", rows="2", id="commentBody", class="form-control comment-form-control", placeholder="Write a comment.", autocomplete="off")}}
-										</form>
-									</span>
-								</div>
 								{% for comment in tweet.comments|sort(attribute='timestamp', reverse=False) %}
 									<div class="row commentRow">
 										<span class="col-md-1 testImgContainer"><img class="img-responsive testImg" src="{{ comment.author.gravatar(size=100) }}"></span>
@@ -94,12 +89,14 @@
 										<span class="col-md-11"><p id="modalTweet">{{ comment.body }}</p></span>
 									</div>
 								{% endfor %}
-								<div id="{{ 'placeholderRow' ~ tweet.id}}"></div>
+							</div>
+							<div class="modal-footer">
 							</div>
 						</div>
 					</div>
 				</div>
 			{% endfor %}
 		{% endif %}
+		</div>
 	</div>
 {% endblock %}

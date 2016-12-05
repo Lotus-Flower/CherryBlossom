@@ -4,50 +4,26 @@
 	<link rel="stylesheet" type="text/css" href="../static/css/login.css">
 {% endblock %}
 {% block content %}
-	<nav class="navbar navbar-default">
-	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <a href="#"><img src="../static/img/cherryBlossomIconCircle.png" id="brandIcon" class="img-circle navbar-brand"></a>
-	    </div>
-	    <ul class="nav navbar-nav">
-	      <li class="active"><a href="#">Home</a></li>
-	      <li><a href="#">About</a></li>
-	    </ul>
-	    <ul class="nav navbar-nav navbar-right">
-	      <li><a href="{{ url_for('index') }}">Login</a></li>
-	    </ul>
-	  </div>
-	</nav>
-
 		<div class="container">
 			<h3>Login to FlaskTwitter</h3>
 			<form action="" method="post" name="login">
 				{{ form.hidden_tag() }}
 				{{ form.username(size=16, class="form-control", placeholder="Username", autocomplete="off")}}
 				{% for error in form.username.errors %}
-            		<span class="warningMessage">[{{ error }}]</span>
-    			{% endfor %}
+					<span class="warningMessage">[{{ error }}]</span>
+				{% endfor %}
 				{{ form.password_hash(size=16, class="form-control", placeholder="Password")}}
 				{% for error in form.password_hash.errors %}
-            		<span class="warningMessage">[{{ error }}]</span>
-    			{% endfor %}
+					<span class="warningMessage">[{{ error }}]</span>
+				{% endfor %}
 				<div id="submitRow">
-		  		<input type="submit" value="Log In" class="btn btn-default"></input>
+					<input type="submit" value="Log In" class="btn btn-default"></input>
 					<span class="rememberMe checkbox"><label class="checkbox-inline"> {{form.rememberMe(default=False)}} Remember Me</label></span>
 				</div>
 			</form>
 			<div class="moreInfoRow">
 				<span class="moreInfoSpan">New user? <a href="{{ url_for('register') }}">Create an Account!</a></span>
 			</div>
-<!-- 		    {% with messages = get_flashed_messages() %}
-		      {% if messages %}
-		        <ul>
-		        {% for message in messages %}
-		            <li>{{ message }} </li>
-		        {% endfor %}
-		        </ul>
-		      {% endif %}
-		    {% endwith %} -->
 		</div>
 {% endblock %}
 

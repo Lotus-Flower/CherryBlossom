@@ -31,12 +31,20 @@
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a href="#"><img src="../static/img/cherryBlossomIconCircle.png" id="brandIcon" class="img-circle navbar-brand"></a>
+				<a href="{{ url_for('newsfeed') }}"><img src="../static/img/cherryBlossomIconCircle.png" id="brandIcon" class="img-circle navbar-brand"></a>
 			</div>
 			<ul class="nav navbar-nav">
 				<li><a href="{{ url_for('newsfeed') }}">Home</a></li>
+				<li><a href="{{ url_for('profile', username=user.username) }}">Profile</a></li>
 				<li><a href="#">About</a></li>
 			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="{{ url_for('logout') }}">Logout</a></li>
+			</ul>
+			<form class="navbar-form navbar-right" action="" method="post" name="search" id="searchfield">
+				{{ searchForm.hidden_tag() }}
+				{{ searchForm.username(size=20, class="form-control", id="searchBar", placeholder="Search User")}}
+			</form>
 		</div>
 	</nav>
 	{% block content %}

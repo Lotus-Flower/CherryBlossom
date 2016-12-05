@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block head %}
+	<!--Style-->
+	<link rel="stylesheet" type="text/css" href="../static/css/error.css">
+{% endblock %}
+
+{% block content %}
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a href="#"><img src="../static/img/cherryBlossomIconCircle.png" id="brandIcon" class="img-circle navbar-brand"></a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li><a href="{{ url_for('newsfeed') }}">Home</a></li>
+				<li><a href="#">About</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 centerCol">
+				<h1>Error - {{ errorDesc }}</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 centerCol">
+				<h4>{{ body }}</h4>
+			</div>
+		</div>
+	</div>
+{% endblock %}

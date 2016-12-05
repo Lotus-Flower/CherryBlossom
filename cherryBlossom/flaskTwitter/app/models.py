@@ -17,15 +17,12 @@ class User(db.Model):
 	email = db.Column(db.String(120), index=True, unique=True)
 	avatar_hash = db.Column(db.String(32), index=True)
 	tweets = db.relationship('Tweet', backref='author', lazy='dynamic')
+	comments = db.relationship('Comment', backref='author', lazy='dynamic')
 	followed = db.relationship('User', secondary=followers, primaryjoin=(followers.c.follower_id == id), secondaryjoin=(followers.c.followed_id == id), backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
 	
 	@hybrid_property
 	def password(self):
 		return self.password_hash
-
-	# @password.setter
-	# def _set_password(self, plaintext):
-	# 	self.password_hash = bcrypt.generate_password_hash(plaintext)
 
 	def is_correct_password(self, plaintext):
 		return bcrypt.check_password_hash(self.password_hash, plaintext)
@@ -100,6 +97,7 @@ class Comment(db.Model):
 	body = db.Column(db.String(300))
 	timestamp = db.Column(db.DateTime)
 	tweet_id = db.Column(db.Integer, db.ForeignKey('tweet.id'))
+	user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 	def __repr__(self):
 		return '<Comment %r>' % (self.body)
